@@ -23,7 +23,9 @@ This repository contains Allure Reports for the WOW Vegas automated test scripts
 
 2. **Run Test Scripts**:
    Execute the test scripts for WOW Vegas to generate raw test result data.
+   ```bash
    npx playwright test
+   ```
 
 4. **Generate Allure Reports**:
    Use the Allure CLI to generate the report from the test results.
