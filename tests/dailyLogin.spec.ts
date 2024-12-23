@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/login";
 import * as allure from "allure-js-commons";
+require('dotenv').config();
 
 test.beforeAll(async () => {
     await allure.severity("Medium");
@@ -15,7 +16,7 @@ test.describe("Daily Login Claim Check", () => {
       const Login = new LoginPage(page);
   
       await page.goto("https://www.wowvegas.com/login", {waitUntil: 'commit'});
-      await Login.login("slots_slave", "4YfJLxbKMpE9wrs@LEhg");
+      await Login.login(process.env.WOW_USERNAME, process.env.WOW_PASSWORD);
       await expect(page).toHaveURL("https://www.wowvegas.com/lobby");
       await page.goto("https://www.wowvegas.com/promotions/daily-coin-reward");
       await page.getByRole("button", { name: "Claim now" }).click();
