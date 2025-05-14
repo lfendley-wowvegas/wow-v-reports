@@ -4,19 +4,20 @@ import * as allure from "allure-js-commons";
 require('dotenv').config();
 
 test.beforeEach(async () => {
-  await allure.severity("Critical");
+  await allure.severity("Medium");
   await allure.owner("Lee Fendley");
   await allure.parentSuite("Promotional");
-  await allure.tags("Promotions","Smoke");
+  await allure.tags("promotion", "daily-mission", "ui", "regression");
 });
 
-test("Daily Mission Widget is Visible", async ({ page }, testinfo) => {
+test("Widgets are Visible", async ({ page }, testinfo) => {
   const Login = new LoginPage(page);
   
-  await page.goto("https://www.wowvegas.com/login", {waitUntil: 'commit'});
+  await page.goto("https://wowvegas.com/login", {waitUntil: 'commit'});
   await Login.login(process.env.WOW_USERNAME, process.env.WOW_PASSWORD);
-  // await page.getByRole('img', { name: 'popup offer' }).click();
+  await page.getByRole('button', { name: ' Got it! ' }).click();
   await expect(page.getByText("Daily Mission Reward")).toBeVisible();
+  await expect(page.getByText("Victory Vault")).toBeVisible();
 
   const screenshot = await page.screenshot();
   await testinfo.attach("screenshot", {

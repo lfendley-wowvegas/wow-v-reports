@@ -10,9 +10,11 @@
   "devDependencies": {
     "@playwright/test": "^1.47.2",
     "@types/node": "^22.7.4",
-    "allure-playwright": "^3.0.6"
+    "allure-playwright": "^3.0.6",
+    "playwright-qase-reporter": "^2.0.17"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
   }
 }
