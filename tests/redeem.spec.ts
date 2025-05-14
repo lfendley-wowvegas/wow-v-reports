@@ -26,7 +26,7 @@ test("Open the redemption view", async ({ page }, testinfo) => {
   await page.getByRole('button', { name: ' Got it! ' }).click();
   await page.getByRole('link', { name: ' Redeem ' }).click();
   await expect(page).toHaveURL("https://www.wowvegas.com/redeem");
-  await page.getByRole('link', { name: 'Redeem Cash Prize' }).click();
+  await page.getByRole('button', { name: 'Redeem Cash Prize' }).click();
   await expect(page.getByText("Here you can redeem your SC winnings for real prizes")).toBeVisible();
 
   const screenshot = await page.screenshot();
