@@ -3,7 +3,7 @@ import { LoginPage } from "../pages/login";
 import * as allure from "allure-js-commons";
 require('dotenv').config();
 
-test.beforeEach(async () => {
+test.beforeEach(async ({page}) => {
   await allure.severity("High");
   await allure.owner("Lee Fendley");
   await allure.parentSuite("Transactional");
@@ -14,16 +14,15 @@ test.beforeEach(async () => {
     "smoke",
     "regression"
   );
-});
 
-test("Open the redemption view", async ({ page }, testinfo) => {
-  test.slow();
   const Login = new LoginPage(page);
   
   await page.goto("https://www.wowvegas.com/login", {waitUntil: 'commit'});
   await Login.login(process.env.WOW_USERNAME, process.env.WOW_PASSWORD);
+});
+
+test("Open the redemption view", async ({ page }, testinfo) => {
   await expect(page).toHaveURL("https://www.wowvegas.com/lobby");
-  await page.getByRole('button', { name: ' Got it! ' }).click();
   await page.getByRole('link', { name: ' Redeem ' }).click();
   await expect(page).toHaveURL("https://www.wowvegas.com/redeem");
   await page.getByRole('button', { name: 'Redeem Cash Prize' }).click();
