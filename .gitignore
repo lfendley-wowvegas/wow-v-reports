@@ -8,3 +8,5 @@ node_modules/
 *.env.*
 !*.env.template
 !*.env.*.template
+auth.json
+test-drafts
