@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Ignored tests",
+    "matchedStatuses": ["skipped"]
+  },
+  {
+    "name": "Product bugs",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*(AssertionError|Expected.*to equal).*"
+  },
+  {
+    "name": "Test defects",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*(TypeError|ReferenceError|TimeoutError).*"
+  },
+  {
+    "name": "Infrastructure issues",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*(ECONNREFUSED|NetworkError|Timeout).*"
+  }
+]
