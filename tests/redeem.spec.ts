@@ -23,6 +23,7 @@ test.beforeEach(async ({page}) => {
 
 test("Open the redemption view", async ({ page }, testinfo) => {
   await expect(page).toHaveURL("https://www.wowvegas.com/lobby");
+  await page.getByRole('button', { name: 'PLAY NOW' }).click();
   await page.getByRole('link', { name: ' Redeem ' }).click();
   await expect(page).toHaveURL("https://www.wowvegas.com/redeem");
   await page.getByRole('button', { name: 'Redeem Cash Prize' }).click();
